@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="card mt-4">
+    <div class="card-header py-3">
+        <a class="btn btn-primary mr-3" href="{% url 'customer-list'%}">Customers List</a><a class="btn btn-primary" href="{% url 'create-customer' %}">Add New Customer</a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Opening Amount</th>
+                <th>Credit Limit</th>
+                <th>Action</th>
+            </tr>
+            {% for Customer in customers %}
+            <tr>
+                    <td>{{ Customer.id }} </td>
+                    <td>{{ Customer.get_status_display }}</td> 
+                    <td>{{ Customer.name }} </td>
+                    <td>{{ Customer.phone }} </td>
+                    <td>{{ Customer.address }} </td>
+                    <td>{{ Customer.opening_amount }} </td>
+                    <td>{{ Customer.credit_limit }} </td>
+                    <td><a class="fs-4" href="#"><i class="bi bi-pencil-square text-primary text-sm"></i></a>  <a class="fs-4" href="#"><i class="bi bi-trash3 text-danger"></i></a> </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+

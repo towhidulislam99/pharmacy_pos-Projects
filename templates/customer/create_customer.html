@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="card mt-4">
+    <div class="card-header bg-primary text-white p-2 fs-5">
+        Create Customer
+    </div>
+
+  <form class="ml-4 p-4 " method="post" action="">
+            {% csrf_token %}
+            {{ customer_form }}
+            <input class="btn btn-primary " type="submit" value="Submit">
+        </form>
+
+    </div>
+</div>
+{% endblock %}
