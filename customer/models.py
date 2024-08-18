@@ -6,6 +6,7 @@ class Customer(models.Model):
         ('inactive', 'Inactive'),
         ('suspended', 'Suspended'),
     ]
+    
 
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')  
     name = models.CharField(max_length=255)  

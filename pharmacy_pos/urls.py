@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path
 from django.conf import settings
-from supplier.views import supplier_list, create_supplier
-from customer.views import customer_list,create_customer
+from supplier.views import supplier_list, create_supplier,delete_supplier
+from customer.views import customer_list,create_customer,delete_customer
 
 
 def dashboard(request):
@@ -30,8 +30,10 @@ def dashboard(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('dashboard', dashboard, name='home'),
-    path('suppliers', supplier_list, name='supplier-list'),
-    path('suppliers/create', create_supplier, name='create-supplier'),
-    path('customer', customer_list, name='customer-list'),
-    path('customer/create', create_customer, name='create-customer'),
+    path('suppliers', supplier_list, name='supplier_list'),
+    path('suppliers/create', create_supplier, name='create_supplier'),
+    path('suppliers/delete/<int:supplier_id>', delete_supplier, name='delete_supplier'),
+    path('customer', customer_list, name='customer_list'),
+    path('customer/create', create_customer, name='create_customer'),
+    path('customer/delete/<int:customer_id>', delete_customer, name='delete_customer'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

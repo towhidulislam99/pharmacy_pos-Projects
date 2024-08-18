@@ -18,20 +18,30 @@ def create_supplier(request):
     if request.method == 'POST':
         form = SupplierForm(request.POST)
         if form.is_valid():
-            manufectural = form.cleaned_data['is_manufectural']
-            name = form.cleaned_data['supplier_name']
-            phone = form.cleaned_data['supplier_phone']
+            form.save()
+            return redirect('supplier_list')  # Ensure this URL name exists
 
-            Supplier.objects.create(
-                is_manufactural=manufectural,
-                supplier_name=name,
-                supplier_phone=phone
-            )
-            return redirect('supplier-list')
+    else:
+        form = SupplierForm()
 
-    form = SupplierForm()
     context = {
         "supplier_form": form
     }
 
     return render(request, 'supplier/create_supplier.html', context)
+
+
+def delete_supplier(request, supplier_id):
+    Supplier.objects.get(id = supplier_id ).delete()
+    return redirect('supplier_list')
+
+
+# manufectural = form.cleaned_data['is_manufectural']
+            # name = form.cleaned_data['supplier_name']
+            # phone = form.cleaned_data['supplier_phone']
+
+            # Supplier.objects.create(
+            #     is_manufactural=manufectural,
+            #     supplier_name=name,
+            #     supplier_phone=phone
+            # )
