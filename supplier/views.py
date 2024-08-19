@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from supplier.models import Supplier
 from .forms import SupplierForm
 
@@ -29,6 +29,26 @@ def create_supplier(request):
     }
 
     return render(request, 'supplier/create_supplier.html', context)
+
+
+def update_supplier(request, supplier_id):
+    supplier = get_object_or_404(Supplier, id=supplier_id)
+    
+    if request.method == 'POST':
+        form = SupplierForm(request.POST, instance=supplier)
+        if form.is_valid():
+            form.save()
+            return redirect('supplier_list')  # Redirect to the supplier list after updating
+    else:
+        form = SupplierForm(instance=supplier)
+
+    context = {
+        "supplier_form": form,
+        "supplier": supplier
+    }
+
+    return render(request, 'supplier/update_supplier.html', context)
+
 
 
 def delete_supplier(request, supplier_id):

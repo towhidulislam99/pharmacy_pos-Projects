@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from customer.models import Customer
 from .forms import CustomerForm
 
@@ -29,6 +29,25 @@ def create_customer(request):
     }
 
     return render(request, 'customer/create_customer.html', context)
+
+def update_customer(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('customer_list')  
+    else:
+        form = CustomerForm(instance=customer)
+
+    context = {
+        "customer_form": form,
+        "customer": customer
+    }
+
+    return render(request, 'customer/update_customer.html', context)
+    
 
 def delete_customer(request, customer_id):
     Customer.objects.get(id = customer_id).delete()

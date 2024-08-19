@@ -25,7 +25,7 @@
                     {% endif %}
                     <td>{{ supplier.supplier_name }} </td>
                     <td>{{ supplier.supplier_phone }} </td>
-                    <td><button class="btn btn-primary"><a class="fs-7" href=""><i class="bi bi-pencil-square text-white text-sm "></i></a></button> <button class="btn btn-danger"><a class="fs-7" href="{% url 'delete_supplier' supplier.id %}"><i class="bi bi-trash3 text-white "></i></a></button></td>
+                    <td><button class="btn btn-primary"><a class="fs-7" href="{% url 'update_supplier' supplier.id %}"><i class="bi bi-pencil-square text-white text-sm "></i></a></button> <button class="btn btn-danger"><a onclick="return confirm('Are you sure Want to Delete it?')" class="fs-7" href="{% url 'delete_supplier' supplier.id %}"><i class="bi bi-trash3 text-white "></i></a></button></td>
 
             </tr>
             {% endfor %}
