@@ -4,13 +4,13 @@
 
 <div class="card mt-4">
     <div class="card-header bg-primary text-white p-2 fs-5">
-        Create Customer
+        Login User
     </div>
 
-  <form class="ml-4 p-4 " method="post" action="">
+  <form class="ml-4 p-4" method="post" action="">
             {% csrf_token %}
-            {{ customer_form }}
-            <input class="btn btn-primary d-grid gap-2 col-12 mx-auto " type="submit" value="Submit">
+            {{ login_form }}
+            <input class="btn btn-primary d-grid gap-2 col-12 mx-auto " type="submit" value="Login">
         </form>
 
     </div>

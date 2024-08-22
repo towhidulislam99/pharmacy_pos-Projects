@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="card mt-4">
+    <div class="card-header py-3">
+        <a class="btn btn-primary mr-3" href="{% url 'user_list' %}">User List</a><a class="btn btn-primary" href="">Add New User</a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.status }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.phone }}</td>
+                <td><button class="btn btn-primary"><a class="fs-7" href="{% url 'update_user' user.id %}"><i class="bi bi-pencil-square text-white text-sm "></i></a></button> <button class="btn btn-danger"><a onclick="return confirm('Are you sure Want to Delete it?')" class="fs-7" href="{% url 'delete_user' user.id%}"><i class="bi bi-trash3 text-white "></i></a></button></td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+

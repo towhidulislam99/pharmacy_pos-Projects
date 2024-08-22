@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "supplier",
     "customer",
+    "user_account",
 ]
 
 MIDDLEWARE = [
@@ -126,4 +127,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+]
+
+
+# Abstart User Model Make this Code here
+AUTH_USER_MODEL = 'user_account.User'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'  # Redirect to after successful login
+
+
+AUTH_PASSWORD_VALIDATORS = [
+    # Optional: Customize or disable validators as needed
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    #     'OPTIONS': {'min_length': 5},  # Adjust the length requirement here
+    # },
+    # Add other validators or custom validators if needed
 ]
