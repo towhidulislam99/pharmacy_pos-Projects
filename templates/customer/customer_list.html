@@ -18,16 +18,16 @@
                 <th>Credit Limit</th>
                 <th>Action</th>
             </tr>
-            {% for Customer in customers %}
+            {% for customer in customers %}
             <tr>
-                    <td>{{ Customer.id }} </td>
-                    <td>{{ Customer.get_status_display }}</td> 
-                    <td>{{ Customer.name }} </td>
-                    <td>{{ Customer.phone }} </td>
-                    <td>{{ Customer.address }} </td>
-                    <td>{{ Customer.opening_amount }} </td>
-                    <td>{{ Customer.credit_limit }} </td>
-                    <td><button class="btn btn-primary"><a class="fs-7" href="{% url 'update_customer' Customer.id %}"><i class="bi bi-pencil-square text-white text-sm "></i></a></button> <button class="btn btn-danger"><a class="fs-7" href="{% url 'delete_customer' Customer.id%}"><i class="bi bi-trash3 text-white "></i></a></button></td>
+                    <td>{{ customer.id }} </td>
+                    <td>{{ customer.get_status_display }}</td> 
+                    <td>{{ customer.name }} </td>
+                    <td>{{ customer.phone }} </td>
+                    <td>{{ customer.address }} </td>
+                    <td>{{ customer.opening_amount }} </td>
+                    <td>{{ customer.credit_limit }} </td>
+                    <td><button class="btn btn-primary"><a class="fs-7" href="{% url 'update_customer' customer.id %}"><i class="bi bi-pencil-square text-white text-sm "></i></a></button> <button class="btn btn-danger"><a class="fs-7" href="{% url 'delete_customer' customer.id%}"><i class="bi bi-trash3 text-white "></i></a></button></td>
 
             </tr>
             {% endfor %}
